@@ -39,7 +39,7 @@ class PlayingField {
         fieldList.add(change2Cells(getNewField(), xo, yo, xo, yo - 1));
         fieldList.add(change2Cells(getNewField(), xo, yo, xo - 1, yo));
         fieldList.add(change2Cells(getNewField(), xo, yo, xo + 1, yo));
-        return fieldList;   //возвращаем лист
+        return fieldList;
     }
 
     boolean isEquals(PlayingField field) {
