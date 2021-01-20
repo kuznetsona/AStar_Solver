@@ -6,7 +6,7 @@ import static org.junit.Assert.assertFalse;
 
 public class Test_Solver {
 
-    public PlayingField OutputSolution(PlayingField playingField){
+    private PlayingField OutputSolution(PlayingField playingField){
         if (playingField.isSolvable()) {
             System.out.println("Задача решается");
             AStarAlgorithm aStarSolver = new AStarAlgorithm(playingField);

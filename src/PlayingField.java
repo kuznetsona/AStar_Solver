@@ -49,7 +49,7 @@ class PlayingField {
         return true;
     }
 
-    boolean isGoal() {      //вызывается в AStarAlgorithm,  проверяем цель ли это?, если все клетки в нужном месте, то эвристическая оценка = 0
+    boolean isGoal() {
         return heuristicEvaluation == 0;
     }
 
