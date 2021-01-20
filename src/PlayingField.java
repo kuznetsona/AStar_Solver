@@ -97,11 +97,11 @@ class PlayingField {
         return heuristicEvaluation;
     }
 
-    private int getLength() {       //возвращает длинну поля (используется в PlayingField (конструктор))
+    private int getLength() {
         return field.length;
     }
 
-    private int[][] getNewField() {     // возвращает новое поле
+    private int[][] getNewField() {
         return getFieldCopy(field);
     }
 
