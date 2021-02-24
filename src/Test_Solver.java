@@ -44,8 +44,4 @@ public class Test_Solver {
         PlayingField playingField = new PlayingField(cells);
         assertTrue(OutputSolution(playingField).isSolvable());
     }
-
-
-
 }
-

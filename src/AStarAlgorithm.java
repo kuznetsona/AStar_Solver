@@ -7,7 +7,7 @@ import static java.util.Comparator.*;
 class AStarAlgorithm {
     private List<PlayingField> result = new ArrayList<>();
     AStarAlgorithm(PlayingField initial) {
-        PriorityQueue<AStarAlgorithm.ITEM> priorityQueue = new PriorityQueue<>(10, comparingInt(item -> heuristicFunction(item)));
+        PriorityQueue<AStarAlgorithm.ITEM> priorityQueue = new PriorityQueue<>(10, comparingInt(AStarAlgorithm::heuristicFunction));
         priorityQueue.add(new AStarAlgorithm.ITEM(null, initial));
         while (true){
             AStarAlgorithm.ITEM field = priorityQueue.poll();
@@ -24,7 +24,6 @@ class AStarAlgorithm {
     }
 
 
-    //!!!!
     private static class ITEM{
         private AStarAlgorithm.ITEM previousField;
         private PlayingField field;
@@ -35,7 +34,7 @@ class AStarAlgorithm {
             this.field = field;
         }
 
-        PlayingField getField() {   //возвращает поле класса PlayingField (используем в heuristicFunction(?))
+        PlayingField getField() {
             return this.field;
         }
     }
@@ -73,7 +72,7 @@ class AStarAlgorithm {
         }
     }
 
-    Iterable<PlayingField> getSolution() {      // вызываем в TestSolver, когда нужно выводить ход решения
+    Iterable<PlayingField> getSolution() {
         return result;
     }
 }

@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 class PlayingField {
@@ -8,13 +7,11 @@ class PlayingField {
     private int heuristicEvaluation;
 
     PlayingField(int[][] cells) {
-        this.field = getFieldCopy(cells);
+        this.field = cells;
         heuristicEvaluation = 0;
         for (int i = 0; i < cells.length; i++)
             for (int j = 0; j < cells[i].length; j++) {
                 if (cells[i][j] != (i * getLength() + j + 1) && cells[i][j] != 0)
-
-
                     heuristicEvaluation += 1;
                 if (cells[i][j] == 0) {
                     xo = i;
@@ -23,7 +20,6 @@ class PlayingField {
             }
     }
 
-    //!!!!!!!
     private PlayingField change2Cells(int[][] cells, int x1, int y1, int x2, int y2) {
         if ((x2 > -1) && (x2 < getLength()) && (y2 > -1) && (y2 < getLength())) {
             int var = cells[x2][y2];
@@ -83,17 +79,10 @@ class PlayingField {
                     zero = i + 1;
         s = s + zero;
 
-        if ((s%2 == 0) || (s == zero)) {
-
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (s % 2 == 0) || (s == zero);
     }
 
     int getHeuristicEvaluation() {
-
         return heuristicEvaluation;
     }
 
