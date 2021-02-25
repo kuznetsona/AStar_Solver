@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 import static java.util.Collections.*;
 import static java.util.Comparator.*;
 
@@ -23,7 +21,6 @@ class AStarAlgorithm {
         }
     }
 
-
     private static class ITEM{
         private AStarAlgorithm.ITEM previousField;
         private PlayingField field;
@@ -39,7 +36,6 @@ class AStarAlgorithm {
         }
     }
 
-    //!!!!!!
     private boolean containsInPath(AStarAlgorithm.ITEM item, PlayingField field){
         AStarAlgorithm.ITEM item2 = item;
         while (true){
