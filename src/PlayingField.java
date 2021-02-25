@@ -38,6 +38,24 @@ class PlayingField {
         return fieldList;
     }
 
+    private int[][] getNewField() {
+        return getFieldCopy(field);
+    }
+
+    private static int[][] getFieldCopy(int[][] field) {
+        if (field == null)
+            return null;
+        else {
+            int[][] result = new int[field.length][field.length];
+            for (int i = 0; i < field.length; i++) {
+                for (int j = 0; j < field.length; j++) {
+                    result[i][j] = field[i][j];
+                }
+            }
+            return result;
+        }
+    }
+
     boolean isEquals(PlayingField field) {
         for (int i = 0; i < this.field.length; i++)
             for (int j = 0; j < this.field[i].length; j++)
@@ -49,29 +67,15 @@ class PlayingField {
         return heuristicEvaluation == 0;
     }
 
-    private static int[][] getFieldCopy(int[][] field) {
-        if (field == null)
-            return null;
-        else {
-            int[][] result = new int[field.length][];
-            for (int i = 0; i < field.length; i++) {
-                result[i] = new int[field[i].length];
-                System.arraycopy(field[i], 0, result[i], 0, field[i].length);
-            }
-            return result;
-        }
-    }
-
     boolean isSolvable() {
         int n = field.length;
-        int m = field[0].length;
         int s = 0;
         int zero = 0;
         for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
+            for (int j = 0; j < n; j++)
                 if (field[i][j] != 0) {
                     for (int k = i; k < n; k++)
-                        for (int l = j; l < m; l++)
+                        for (int l = j; l < n; l++)
                             if ((field[i][j] > field[k][l]) && (field[k][l] != 0))
                                 s++;
                 }
@@ -90,9 +94,7 @@ class PlayingField {
         return field.length;
     }
 
-    private int[][] getNewField() {
-        return getFieldCopy(field);
-    }
+
 
     String getString() {
         StringBuilder s = new StringBuilder();

@@ -3,10 +3,10 @@ import static java.util.Collections.*;
 import static java.util.Comparator.*;
 
 class AStarAlgorithm {
-    private List<PlayingField> result = new ArrayList<>();
-    AStarAlgorithm(PlayingField initial) {
+
+    AStarAlgorithm(PlayingField first) {
         PriorityQueue<AStarAlgorithm.ITEM> priorityQueue = new PriorityQueue<>(10, comparingInt(AStarAlgorithm::heuristicFunction));
-        priorityQueue.add(new AStarAlgorithm.ITEM(null, initial));
+        priorityQueue.add(new AStarAlgorithm.ITEM(null, first));
         while (true){
             AStarAlgorithm.ITEM field = priorityQueue.poll();
             assert field != null;
@@ -14,14 +14,17 @@ class AStarAlgorithm {
                 itemToList(new AStarAlgorithm.ITEM(field, field.field));
                 return;
             }
+
             for (PlayingField field1 : field.field.swapAdjacentPositions()) {
                 if (field1 != null && !containsInPath(field, field1))
+
                     priorityQueue.add(new AStarAlgorithm.ITEM(field, field1));
             }
         }
     }
 
     private static class ITEM{
+
         private AStarAlgorithm.ITEM previousField;
         private PlayingField field;
 
@@ -56,6 +59,7 @@ class AStarAlgorithm {
         }
     }
 
+    private List<PlayingField> result = new ArrayList<>();
     private void itemToList(AStarAlgorithm.ITEM item){
         AStarAlgorithm.ITEM item2 = item;
         while (true){
